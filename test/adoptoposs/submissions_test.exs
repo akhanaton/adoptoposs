@@ -187,7 +187,7 @@ defmodule Adoptoposs.SubmissionsTest do
       recommendations = Submissions.list_recommended_projects(user, language)
 
       assert Enum.count(recommendations) == Enum.count(projects)
-      assert Enum.map(recommendations, & &1.id) == Enum.map(projects, & &1.id)
+      assert Enum.map(recommendations, & &1.id) == projects |> Enum.reverse() |> Enum.map(& &1.id)
     end
   end
 end
